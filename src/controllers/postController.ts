@@ -1,13 +1,25 @@
 import { Request, Response, NextFunction } from "express";
 import Post, { IPost } from "../models/postModel";
 import {User} from "../models/userModel";
+import { createPostService } from "../service/postService";
 
 // Create a new post
 export const createPost = async (
   req: Request,
   res: Response,
   next: NextFunction
-): Promise<void> => {};
+): Promise<void> => {
+  try {
+    const myPost :IPost | unknown = await createPostService(req.body)
+    res.status(201).json({
+      myPost
+    })
+  } catch (err) {
+    res.json({
+      err
+    })
+  }
+};
 
 // Delete a post
 export const deletePost = async (

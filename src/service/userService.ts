@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { IUser, User,userModel } from "../models/userModel";
 
 
@@ -20,6 +21,9 @@ export const createUserService = async (user:IUser):Promise<User|unknown> => {
   };
   export const gettUserByName = async (username:string) :Promise<User | unknown> => {
     return await userModel.findOne({username})
+  }
+  export const gettUserById = async (id:mongoose.Types.ObjectId) :Promise<User | unknown> => {
+    return await userModel.findById(id)
   }
 
   export const getAllUsers = async ():Promise<User[] | unknown> => {
