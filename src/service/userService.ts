@@ -3,7 +3,7 @@ import { IUser, User,userModel } from "../models/userModel";
 
 
 
-const createUserService = async (user:IUser):Promise<User|unknown> => {
+export const createUserService = async (user:IUser):Promise<User|unknown> => {
     try {
       const { username,email,profile} = user;
       const dbUser = new userModel({
@@ -18,6 +18,10 @@ const createUserService = async (user:IUser):Promise<User|unknown> => {
       throw err
     }
   };
-  const gettUserByName = async (username:string) :Promise<User | unknown> => {
-    return await userModel.find({username})
+  export const gettUserByName = async (username:string) :Promise<User | unknown> => {
+    return await userModel.findOne({username})
+  }
+
+  export const getAllUsers = async ():Promise<User[] | unknown> => {
+    return await userModel.find()
   }

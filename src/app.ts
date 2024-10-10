@@ -20,6 +20,7 @@ app.use("/api/posts", postRouter);
 app.use("/api/users", userRouter);
 
 
+
 // Error handling middleware
 app.use(errorHandler);
 
