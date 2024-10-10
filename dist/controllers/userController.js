@@ -10,7 +10,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getUser = exports.getUsers = exports.createUser = void 0;
-const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () { });
+const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield ;
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
 exports.createUser = createUser;
 const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () { });
 exports.getUsers = getUsers;

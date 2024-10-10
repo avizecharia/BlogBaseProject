@@ -11,7 +11,7 @@ export interface IUser extends Document {
     bio?: string;
     socialLinks?: string[];
   };
-  posts: Types.ObjectId[];
+  posts?:Types.ObjectId[];
 }
 
 
