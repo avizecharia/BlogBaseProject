@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import Post, { IPost } from "../models/postModel";
 import {User} from "../models/userModel";
-import { createPostService, getAllPosts, gettPostById, updatePostService } from "../service/postService";
+import { createPostService, getAllPosts, getPostById, updatePostService ,DeletePost} from "../service/postService";
 import mongoose from "mongoose";
 
 // Create a new post
@@ -27,7 +27,18 @@ export const deletePost = async (
   req: Request,
   res: Response,
   next: NextFunction
-): Promise<void> => {};
+): Promise<void> => {
+  try {
+    const result : IPost | unknown = await DeletePost(req.params.id)
+    res.status(204).json({
+      result
+    })
+  } catch (err) {
+    res.json({
+      err
+    })
+  }
+};
 
 
 
@@ -57,7 +68,7 @@ export const getPost = async (
   next: NextFunction
 ): Promise<void> => {
   try {
-    const myPost : IPost | unknown = await gettPostById(req.params.id)
+    const myPost : IPost | unknown = await getPostById(req.params.id)
     res.status(200).json({
       myPost
     })
