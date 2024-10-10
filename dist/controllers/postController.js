@@ -30,13 +30,49 @@ exports.createPost = createPost;
 const deletePost = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () { });
 exports.deletePost = deletePost;
 // Get all posts
-const getPosts = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () { });
+const getPosts = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const allPosts = yield (0, postService_1.getAllPosts)();
+        res.status(200).json({
+            allPosts
+        });
+    }
+    catch (err) {
+        res.json({
+            err
+        });
+    }
+});
 exports.getPosts = getPosts;
 // Get a single post by ID
-const getPost = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () { });
+const getPost = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const myPost = yield (0, postService_1.gettPostById)(req.params.id);
+        res.status(200).json({
+            myPost
+        });
+    }
+    catch (err) {
+        res.json({
+            err
+        });
+    }
+});
 exports.getPost = getPost;
 // Update a post
-const updatePost = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () { });
+const updatePost = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const updatePost = yield (0, postService_1.updatePostService)(req.params.id, req.body);
+        res.status(200).json({
+            updatePost
+        });
+    }
+    catch (err) {
+        res.json({
+            err
+        });
+    }
+});
 exports.updatePost = updatePost;
 // Add a comment to a post
 const addComment = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () { });
