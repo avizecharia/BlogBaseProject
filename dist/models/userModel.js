@@ -26,6 +26,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.userModel = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 const isEmail_1 = __importDefault(require("validator/lib/isEmail"));
 const profileDto_1 = __importDefault(require("../types/dto/profileDto"));
@@ -50,4 +51,4 @@ const UserSchema = new mongoose_1.Schema({
         default: []
     }
 });
-exports.default = mongoose_1.default.model("User", UserSchema);
+exports.userModel = mongoose_1.default.model("User", UserSchema);

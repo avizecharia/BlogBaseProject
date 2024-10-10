@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document, Types } from "mongoose";
+import mongoose, { Schema, Document, Types, InferSchemaType } from "mongoose";
 import validator from "validator";
 import isEmail from "validator/lib/isEmail";
 import profileDto from '../types/dto/profileDto'
@@ -41,4 +41,8 @@ const UserSchema = new Schema<IUser>({
 
 });
 
-export default mongoose.model<IUser>("User", UserSchema);
+export type User = InferSchemaType<typeof UserSchema>;
+
+export const userModel =  mongoose.model<IUser>("User", UserSchema);
+
+
