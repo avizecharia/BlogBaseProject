@@ -2,9 +2,18 @@ import { Schema } from "mongoose";
 
 
  interface ProfileDto {
-    bio?:string,
+    bio:string,
     socialLinks?:string[]
 }
-const profileSchema = new Schema<ProfileDto>({});
+const profileSchema = new Schema<ProfileDto>({
+    bio:{
+        type:String,
+        default:"",
+    },
+    socialLinks:{
+        type:[String],
+        default:[]
+    }
+});
 
 export default profileSchema

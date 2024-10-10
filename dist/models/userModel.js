@@ -22,7 +22,32 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const UserSchema = new mongoose_1.Schema({});
+const isEmail_1 = __importDefault(require("validator/lib/isEmail"));
+const profileDto_1 = __importDefault(require("../types/dto/profileDto"));
+const UserSchema = new mongoose_1.Schema({
+    username: {
+        type: String,
+        required: [true, "you  missing user name"],
+        min: [4, "insert min 4 chart"],
+        max: [20, "you cant insert more then 20 chart"]
+    },
+    email: {
+        type: String,
+        required: [true, " you must insert email"],
+        validate: isEmail_1.default
+    },
+    profile: {
+        type: profileDto_1.default
+    },
+    posts: {
+        type: [mongoose_1.Types.ObjectId],
+        ref: "Post",
+        default: []
+    }
+});
 exports.default = mongoose_1.default.model("User", UserSchema);

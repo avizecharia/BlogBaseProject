@@ -32,7 +32,11 @@ const UserSchema = new Schema<IUser>({
   },
   profile:{
     type:profileDto
-
+  },
+  posts:{
+    type:[Types.ObjectId],
+    ref:"Post",
+    default:[]
   }
 
 });
